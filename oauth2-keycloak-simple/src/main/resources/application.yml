@@ -1,0 +1,7 @@
+server.port: 8080
+
+spring:
+  application.name: OAuth2_Resource_Server
+  output.ansi.enabled: ALWAYS
+
+  security.oauth2.resourceserver.jwt.jwk-set-uri: http://localhost:8180/realms/JamesOAuth2HelloExample/protocol/openid-connect/certs
