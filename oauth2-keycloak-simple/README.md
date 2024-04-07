@@ -24,17 +24,19 @@ docker compose up -d
 ![Keycloak Admin login](images/03_keycloak_admin_login.png)
 ![Keycloak Master Realm](images/04_keycloak_master_realm.png)
 
-### Keycloak Setup: Create Realm
+### Keycloak Setup: Create Realm - JamesOAuth2HelloExample
 ![](images/05_keycloak_create_realm_01.png)
 ![](images/06_keycloak_create_realm_02.png)
 ![](images/07_keycloak_realm_created.png)
 
-### Keycloak Setup: Create Realm Role
+### Keycloak Setup: Create Realm Role - user
 ![](images/08_keycloak_create_realm_role_01.png)
 ![](images/09_keycloak_create_realm_role_02.png)
 
 ### Keycloak Setup: Create User
 ![](images/10_keycloak_create_user_01.png)
+#### Username: james
+#### Email: james@test.com
 ![](images/11_keycloak_create_user_02.png)
 ![](images/12_keycloak_create_user_03.png)
 ![](images/13_keycloak_create_user_04.png)
@@ -46,15 +48,30 @@ docker compose up -d
 
 ### Keycloak Setup: Create Client
 ![](images/17_keycloak_create_client_01.png)
+#### ClientId: JamesHelloClient
 ![](images/18_keycloak_create_client_02.png)
 ![](images/19_keycloak_create_client_03.png)
+#### Valid redirect uri: Dummy value: http://localhost:7080/sample
 ![](images/20_keycloak_create_client_04.png)
 ![](images/21_keycloak_create_client_05.png)
 
 ### Postman: Config Setup
 ![postman OAuth2 setup 01](images/22_postman_OAuth2_setup_01.png)
+#### Callback URL: http://localhost:7080/sample
 ![postman OAuth2 setup 02](images/23_postman_OAuth2_setup_02.png)
+#### Available endpoints
+- [Available endpoints](https://www.keycloak.org/docs/latest/securing_apps/#available-endpoints)
+  - **well-known** configuration endpoint
+    - `/realms/{realm-name}/.well-known/openid-configuration`
+    - http://localhost:8180/realms/JamesOAuth2HelloExample/.well-known/openid-configuration
 ![postman OAuth2 setup 03](images/24_postman_OAuth2_setup_03.png)
+#### Authorization endpoint:
+- **Auth URL** in Postman
+  - http://localhost:8180/realms/JamesOAuth2HelloExample/protocol/openid-connect/auth
+#### Token endpoint
+- **Access Token URL** in Postman
+- http://localhost:8180/realms/JamesOAuth2HelloExample/protocol/openid-connect/token
+
 ![postman OAuth2 setup 04](images/25_postman_OAuth2_setup_04.png)
 
 ### Postman: Get Access Token
